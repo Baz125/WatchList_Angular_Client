@@ -19,7 +19,6 @@ import { WelcomePageComponent } from './welcome-page/welcome-page.component';
 import { RouterModule, Routes } from '@angular/router';
 import { MatIconModule } from '@angular/material/icon';
 import { ProfilePageComponent } from './profile-page/profile-page.component';
-import { UserLoginService } from './fetch-api-data.service';
 
 const appRoutes: Routes = [
   { path: 'welcome', component: WelcomePageComponent },
@@ -46,7 +45,7 @@ const appRoutes: Routes = [
     MatFormFieldModule,
     MatSnackBarModule
   ],
-  providers: [UserLoginService],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
