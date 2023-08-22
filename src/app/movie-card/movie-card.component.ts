@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { MovieDataApis } from '../fetch-api-data.service'
+import { MovieDataApisService } from '../services/movie-data-apis.service'
 
 
 @Component({
@@ -9,7 +9,7 @@ import { MovieDataApis } from '../fetch-api-data.service'
 })
 export class MovieCardComponent {
   movies: any[] = [];
-  constructor(public fetchApiData: MovieDataApis) { }
+  constructor(public fetchApiData: MovieDataApisService) { }
 
 ngOnInit(): void {
   this.getMovies();

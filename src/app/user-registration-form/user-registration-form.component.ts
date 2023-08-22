@@ -2,11 +2,9 @@ import { Component, OnInit, Input } from '@angular/core';
 // use this to close the dialog on success
 import { MatDialogRef } from '@angular/material/dialog';
 //brings in the API calls we created in 6.2
-import { WelcomeScreenApis } from '../fetch-api-data.service';
+import { WelcomeScreenApis } from '../services/fetch-api-data.service';
 //used to display notifications back to the user
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { MatCardModule } from '@angular/material/card';
-
 
 @Component({
   selector: 'app-user-registration-form',
