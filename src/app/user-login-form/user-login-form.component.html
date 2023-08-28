@@ -3,8 +3,8 @@
       <mat-card-title>Login</mat-card-title>
     </mat-card-header>
     <mat-card-content>
-      <form>
-        <mat-form-field>
+      <form (keyup.enter)="loginUser()">
+        <mat-form-field (keyup.enter)="loginUser()">
           <input
             matInput
             [(ngModel)]="userData.username"
@@ -15,7 +15,7 @@
             required
           >
         </mat-form-field>
-        <mat-form-field>
+        <mat-form-field (keyup.enter)="loginUser()">
           <input
             matInput
             [(ngModel)]="userData.password"
@@ -32,7 +32,7 @@
         <button
           mat-raised-button
           (click)="loginUser()"
-          color="primary"          
+          color="primary"
         >
           Login
         </button>

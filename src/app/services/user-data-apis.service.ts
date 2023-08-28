@@ -13,9 +13,10 @@ const apiUrl = 'https://moviedb125.herokuapp.com/'
 export class UserDataApisService {
 
   constructor(private http: HttpClient) { }
-  getUser(username: any): Observable<any> {
+  getUser(): Observable<any> {
     const token = localStorage.getItem('token');
-    return this.http.get(apiUrl + 'users/ ' + username, {
+    const username = localStorage.getItem('username');
+    return this.http.get(apiUrl + 'users/' + username, {
       headers: new HttpHeaders(
         {
           Authorization: 'Bearer ' + token,
@@ -28,7 +29,7 @@ export class UserDataApisService {
 
   getUsersFavorites(username: any): Observable<any> {
     const token = localStorage.getItem('token');
-    return this.http.get(apiUrl + 'users/ ' + username + 'favoritemovies', {
+    return this.http.get(apiUrl + 'users/' + username + 'favoritemovies', {
       headers: new HttpHeaders(
         {
           Authorization: 'Bearer ' + token,

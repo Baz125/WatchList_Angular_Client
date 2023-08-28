@@ -1,0 +1,56 @@
+<mat-card>
+    <mat-card-header>
+        <mat-card-title>Edit your details</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <form>
+          <mat-form-field (keyup.enter)="editUser()">
+            <input
+              matInput
+              [(ngModel)]="userData.Username"             
+              type="text"
+              name="Username"
+              autocomplete="username"
+              required
+            >
+          </mat-form-field>
+            <mat-form-field>
+              <input
+                matInput
+                [(ngModel)]="userData.Email"
+                type = "email"
+                placeholder="Email"
+                name="Email"
+                required
+              >
+            </mat-form-field>
+            <mat-form-field class="edit-date-field" (keyup.enter)="editUser()">
+              <mat-label>Enter your birthday</mat-label>
+              <input
+                matInput
+                [matDatepicker]="datepicker"
+                [(ngModel)]="userData.Birthday"
+                type = "text"
+                placeholder="Birthday"  
+                name="Birthday"
+              >
+              <mat-datepicker-toggle matIconSuffix [for]="datepicker"></mat-datepicker-toggle>
+              <mat-datepicker #datepicker>
+                <mat-datepicker-actions>
+                  <button mat-button matDatepickerCancel>Cancel</button>
+                  <button mat-raised-button color="primary" matDatepickerApply>Apply</button>
+                </mat-datepicker-actions>
+              </mat-datepicker>
+            </mat-form-field>
+      </form>
+    </mat-card-content>
+    <mat-card-actions>
+      <button
+        mat-raised-button
+        (click)="editUser()"
+        color="primary"
+      >
+        Update
+      </button>
+    </mat-card-actions>
+  </mat-card>

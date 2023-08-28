@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,22 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'myFlix-Angular-client';
+  title = 'WatchList';
+  constructor(
+    private router: Router) { }
+
+  onLogout(): void {
+    localStorage.removeItem('user');
+    localStorage.removeItem('username');
+    localStorage.removeItem('token');
+    this.router.navigate(['welcome']);
+  };
+
+  onProfileClick(): void {
+    this.router.navigate(['profile']);
+  }
+
+  onHomeClick(): void {
+    this.router.navigate(['/']);
+  }
 }

@@ -1,10 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
-// use this to close the dialog on success
 import { MatDialogRef } from '@angular/material/dialog';
-//brings in the API calls we created in 6.2
-import { WelcomeScreenApis } from '../services/fetch-api-data.service';
-//used to display notifications back to the user
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { MatDatepicker } from '@angular/material/datepicker';
 import {
   MAT_MOMENT_DATE_FORMATS,
   MomentDateAdapter,
@@ -12,11 +9,12 @@ import {
 } from '@angular/material-moment-adapter';
 import {DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE} from '@angular/material/core';
 import 'moment/locale/en-ie';
+import { EditUserApisService } from '../services/edit-user-apis.service';
 
 @Component({
-  selector: 'app-user-registration-form',
-  templateUrl: './user-registration-form.component.html',
-  styleUrls: ['./user-registration-form.component.scss'],
+  selector: 'app-edit-user-component',
+  templateUrl: './edit-user-component.component.html',
+  styleUrls: ['./edit-user-component.component.scss'],
   providers: [{ provide: MAT_DATE_LOCALE, useValue: 'en-ie' },
   {
     provide: DateAdapter,
@@ -26,28 +24,33 @@ import 'moment/locale/en-ie';
   {provide: MAT_DATE_FORMATS, useValue: MAT_MOMENT_DATE_FORMATS},
 ]
 })
-export class UserRegistrationFormComponent implements OnInit {
-  @Input() userData = { username: '', password: '', email: '', birthday: '' };
+  
+export class EditUserComponentComponent implements OnInit {
+  @Input() userData = { Username: '', Email: '', Birthday: '' };
 
   constructor(
-    public fetchApiData: WelcomeScreenApis,
-    public dialogRef: MatDialogRef<UserRegistrationFormComponent>,
+    public editUserApi: EditUserApisService,
+    public dialogRef: MatDialogRef<EditUserComponentComponent>,
     public snackBar: MatSnackBar) { }
 
   ngOnInit(): void {
+    const userDataString = localStorage.getItem('user');
+    if (userDataString !== null) {
+      this.userData = JSON.parse(userDataString);
+    }
   }
 
   // This is the function responsible for
   // sending the form inputs to the backend
-  registerUser(): void {
-    this.fetchApiData.userRegistration(this.userData).subscribe((result) => {
-      // Logic for a successful user registration goes here! (To be implemented)
+  editUser(): void {
+    this.editUserApi.editUser(localStorage.getItem('username'), this.userData).subscribe((result) => {
+      console.log(result);
       this.dialogRef.close(); //Closes modal on success
       this.snackBar.open('Success!', 'OK', {
         duration: 2000
       });
     }, (result) => {
-      this.snackBar.open('Success!', 'OK', {
+      this.snackBar.open(result, 'OK', {
         duration: 2000
       });
     });

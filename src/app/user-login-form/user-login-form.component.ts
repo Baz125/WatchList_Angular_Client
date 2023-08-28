@@ -6,7 +6,6 @@ import { WelcomeScreenApis } from '../services/fetch-api-data.service';
 // This import is used to display notifications back to the user
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
-import { MatCard } from '@angular/material/card';
 
 
 
@@ -22,7 +21,6 @@ constructor(
     public fetchApiData: WelcomeScreenApis,
     public dialogRef: MatDialogRef<UserLoginFormComponent>,
     public snackBar: MatSnackBar,
-    public matCard: MatCard, 
     private router: Router) { }
 
 ngOnInit(): void { }

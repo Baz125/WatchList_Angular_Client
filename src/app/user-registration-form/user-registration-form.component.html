@@ -4,7 +4,7 @@
   </mat-card-header>
   <mat-card-content>
     <form>
-        <mat-form-field>
+        <mat-form-field (keyup.enter)="registerUser()">
           <input
             matInput
             [(ngModel)]="userData.username"
@@ -36,14 +36,22 @@
               required
             >
           </mat-form-field>
-          <mat-form-field>
+          <mat-form-field class="edit-date-field" (keyup.enter)="registerUser()">
             <input
               matInput
+              [matDatepicker]="datepicker"
               [(ngModel)]="userData.birthday"
               type = "date"
               placeholder="Birthday"  
               name="Birthday"
             >
+            <mat-datepicker-toggle matIconSuffix [for]="datepicker"></mat-datepicker-toggle>
+              <mat-datepicker #datepicker>
+                <mat-datepicker-actions>
+                  <button mat-button matDatepickerCancel>Cancel</button>
+                  <button mat-raised-button color="primary" matDatepickerApply>Apply</button>
+                </mat-datepicker-actions>
+              </mat-datepicker>
           </mat-form-field>
     </form>
   </mat-card-content>

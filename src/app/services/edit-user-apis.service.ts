@@ -16,7 +16,7 @@ export class EditUserApisService {
 
   editUser(username: any, editUserDetails: any): Observable<any> {
     const token = localStorage.getItem('token');
-    return this.http.put(apiUrl + 'users/ ' + username, editUserDetails, {
+    return this.http.put(apiUrl + 'users/' + username, editUserDetails, {
       headers: new HttpHeaders(
         {
           Authorization: 'Bearer ' + token,
