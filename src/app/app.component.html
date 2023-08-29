@@ -1,19 +1,25 @@
-<div class="main-page">
-  <h1>
-    Welcome to myFlix!
-  </h1>
-  <button
-    Mat-raised-button
-    (click)="openUserRegistrationDialog()"
-    style="margin-right: 10px;"
-    color="primary"
-  >
-    Sign Up
-  </button>
-  <button
-    mat-raised-button
-    color="primary"
-  >
-    Login
-  </button>
-</div>
+<p>
+    <mat-toolbar>
+     <button (click)="onHomeClick()" mat-button class="example-icon" aria-label="Home button">
+        <span>WatchList</span>
+    </button>    
+    <span class="example-spacer"></span>
+    <button 
+        mat-icon-button class="profile-icon" 
+        aria-label="icon button for navigation to profile page"
+        (click)="onProfileClick()"
+        >
+      <mat-icon>account_circle</mat-icon>
+    </button>
+    <button 
+        mat-icon-button class="logout-icon" 
+        aria-label="icon button for logout"
+        (click)="onLogout()"
+        >
+     <mat-icon>logout</mat-icon>
+   </button>
+  </mat-toolbar>
+</p>
+
+<router-outlet></router-outlet>
+

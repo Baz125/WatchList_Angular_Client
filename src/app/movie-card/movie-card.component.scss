@@ -1,0 +1,63 @@
+
+
+
+.movie-card-container {
+  display: flex;
+  overflow-x: auto; /* Enable horizontal scrolling if needed */
+  margin-bottom: -10px; /* Compensate for card margin inside the container */
+}
+
+mat-card-title-group {
+    height: 100px; /* Set a fixed height for the header */
+  }
+
+.movie-card {
+    display: flex;
+    flex-direction: column;
+  
+    /* Add a box shadow for a card-like effect */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  
+    .card-content {
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+      padding: 16px;
+  
+      .mat-card-title {
+        font-size: 18px;
+        font-weight: 600;
+        margin-bottom: 8px;
+      }
+  
+      .mat-card-subtitle {
+        font-weight: 400;
+        color: #888;
+      }
+    }
+  
+    img {
+      height: 80%;
+      width: 100%;
+      object-fit: cover;
+    }
+  
+    .mat-card-actions {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 16px;
+      border-top: 1px solid #ccc;
+      background-color: #f5f5f5;
+  
+      button.mat-button {
+        font-size: 14px;
+      }
+  
+      .mat-icon {
+        font-size: 24px;
+        color: #e74c3c;
+        cursor: pointer;
+      }
+    }
+  }

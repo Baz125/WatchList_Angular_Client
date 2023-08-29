@@ -1,0 +1,25 @@
+.card-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.profile-card {
+    
+    max-width: 350px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.profile-image {
+ max-height: 250px;
+ max-width: 250px;
+}
+
+mat-card-actions {
+    width: 100%;
+    display: flexbox;
+    justify-content: space-between;
+}

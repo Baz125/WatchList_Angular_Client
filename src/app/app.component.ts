@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
-import { UserRegistrationFormComponent } from './user-registration-form/user-registration-form.component';
-import { MatDialog } from '@angular/material/dialog';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -8,13 +7,22 @@ import { MatDialog } from '@angular/material/dialog';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'myFlx-Angular-client';
+  title = 'WatchList';
+  constructor(
+    private router: Router) { }
 
-  constructor(public dialog: MatDialog) { }
-  //opens the dialog when the signup button is clicked  
-  openUserRegistrationDialog(): void {
-    this.dialog.open(UserRegistrationFormComponent, {
-      width: '280px'
-    });
+  onLogout(): void {
+    localStorage.removeItem('user');
+    localStorage.removeItem('username');
+    localStorage.removeItem('token');
+    this.router.navigate(['welcome']);
+  };
+
+  onProfileClick(): void {
+    this.router.navigate(['profile']);
+  }
+
+  onHomeClick(): void {
+    this.router.navigate(['/']);
   }
 }
