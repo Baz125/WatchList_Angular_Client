@@ -42,7 +42,7 @@ export class UserDataApisService {
 
   addFavorite(username: any, _id: string): Observable<any> {
     const token = localStorage.getItem('token');
-    return this.http.put(apiUrl + 'users/ ' + username + 'favoritemovies/' + _id, {
+    return this.http.put(apiUrl + 'users/' + username + '/movies/' + _id, {}, {
       headers: new HttpHeaders(
         {
           Authorization: 'Bearer ' + token,
@@ -55,7 +55,7 @@ export class UserDataApisService {
 
   deleteFavorite(username: any, _id: string): Observable<any> {
     const token = localStorage.getItem('token');
-    return this.http.delete(apiUrl + 'users/ ' + username + 'favoritemovies/' + _id, {
+    return this.http.delete(apiUrl + 'users/' + username + '/movies/' + _id, {
       headers: new HttpHeaders(
         {
           Authorization: 'Bearer ' + token,

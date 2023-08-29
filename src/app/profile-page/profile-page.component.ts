@@ -8,8 +8,6 @@ import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import moment from "moment";
 
-
-
 @Component({
   selector: 'app-profile-page',
   templateUrl: './profile-page.component.html',
@@ -41,10 +39,19 @@ export class ProfilePageComponent implements OnInit {
   }
 
   openEditUserDialog(): void {
-    this.dialog.open(EditUserComponentComponent, {
+    const dialogRef = this.dialog.open(EditUserComponentComponent, {
       width: '280px'
     });
+    const editUserComponent = dialogRef.componentInstance;
+    editUserComponent.dialogClosed.subscribe(() => {
+      this.onDialogClosed();
+    })
   }
+
+  onDialogClosed(): void {
+    this.getUser();
+  }
+
   //get user data from local storage
   getUser(): void {
     const userDataJSON = localStorage.getItem('user');
@@ -59,31 +66,15 @@ export class ProfilePageComponent implements OnInit {
     }
   };
 
-//get user data from API
-  // getUser(): void {
-  //   this.getUserData.getUser().subscribe((response: any) => {
-  //     this.user = response;
-  //     this.userData.username = this.user.Username;
-  //     this.userData.email = this.user.Email;
-  //     this.userData.birthday = moment(this.user.Birthday).format('MMMM Do Y');
 
-      // this.getMovieData.getAllMovies().subscribe((response: any) => {
-      //   console.log(response);
-      //   this.favoriteMovies = response.filter((m: { _id: any }) => this.user.FavoriteMovies.indexOf(m._id) >= 0)
-      // });
-  //   });
-  // };
   getMovies(): void {
       this.getMovieData.getAllMovies().subscribe((response: any) => {
-        console.log(response);
         this.favoriteMovies = response.filter((m: { _id: any }) => this.user.FavoriteMovies.indexOf(m._id) >= 0)
       })
   }  
   onDeleteClick(): void {
     if(confirm("Are you sure you want to to delete")) {
       this.editUserData.deleteUser(localStorage.getItem('username')).subscribe((result) => {
-        // Logic for a successful user registration goes here! (To be implemented)
-        console.log(result);
         this.snackBar.open('See you later aligator!', 'OK', {
           duration: 2000
         });

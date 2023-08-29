@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatDatepicker } from '@angular/material/datepicker';
@@ -27,6 +27,7 @@ import { EditUserApisService } from '../services/edit-user-apis.service';
   
 export class EditUserComponentComponent implements OnInit {
   @Input() userData = { Username: '', Email: '', Birthday: '' };
+  @Output() dialogClosed = new EventEmitter<void>();
 
   constructor(
     public editUserApi: EditUserApisService,
@@ -44,8 +45,9 @@ export class EditUserComponentComponent implements OnInit {
   // sending the form inputs to the backend
   editUser(): void {
     this.editUserApi.editUser(localStorage.getItem('username'), this.userData).subscribe((result) => {
-      console.log(result);
+      localStorage.setItem('user', JSON.stringify(result));
       this.dialogRef.close(); //Closes modal on success
+      this.dialogClosed.emit(); //emits event to let profile-page know to reinitialize
       this.snackBar.open('Success!', 'OK', {
         duration: 2000
       });

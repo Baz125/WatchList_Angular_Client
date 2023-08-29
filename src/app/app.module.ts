@@ -26,7 +26,7 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { MatMomentDateModule } from "@angular/material-moment-adapter";
 import * as moment from 'moment';
 import { EditUserComponentComponent } from './edit-user-component/edit-user-component.component';
-import { GenreDialogComponent } from './genre-dialog/genre-dialog.component';
+import { MovieInfoComponent } from './movie-info/movie-info.component';
 
 const appRoutes: Routes = [
   { path: 'welcome', component: WelcomePageComponent },
@@ -37,7 +37,7 @@ const appRoutes: Routes = [
 
 @NgModule({
   declarations: [
-    AppComponent, UserRegistrationFormComponent, UserLoginFormComponent, MovieCardComponent, WelcomePageComponent, ProfilePageComponent, EditUserComponentComponent, GenreDialogComponent 
+    AppComponent, UserRegistrationFormComponent, UserLoginFormComponent, MovieCardComponent, WelcomePageComponent, ProfilePageComponent, EditUserComponentComponent, MovieInfoComponent 
   ],
   imports: [
     RouterModule.forRoot(appRoutes),
