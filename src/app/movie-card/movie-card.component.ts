@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { MovieDataApisService } from '../services/movie-data-apis.service'
 import { UserDataApisService } from '../services/user-data-apis.service';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
@@ -13,12 +14,15 @@ import { MovieInfoComponent } from '../movie-info/movie-info.component';
 export class MovieCardComponent {
   movies: any[] = [];
   constructor(
+    private router: Router,
     public fetchApiData: MovieDataApisService,
     public dialog: MatDialog,
     public getUserData: UserDataApisService  ) { }
 
 
   ngOnInit(): void {
+    const user = localStorage.getItem('user');
+    if (!user) this.router.navigate(['/welcome']);
     this.getMovies();
   }
 
