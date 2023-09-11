@@ -6,7 +6,7 @@ import { MovieDataApisService } from '../services/movie-data-apis.service';
 import { EditUserComponentComponent } from '../edit-user-component/edit-user-component.component';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import moment from "moment";
+import * as moment from "moment";
 
 @Component({
   selector: 'app-profile-page',

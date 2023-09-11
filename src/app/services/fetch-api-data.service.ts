@@ -4,7 +4,7 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { map } from 'rxjs/operators';
 
-//Declaring the api rul that will provide data for the client app
+//Declaring the api url that will provide data for the client app
 const apiUrl = 'https://moviedb125.herokuapp.com/'
 
 @Injectable({
