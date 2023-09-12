@@ -1,25 +1,4 @@
-<p>
-    <mat-toolbar>
-     <button (click)="onHomeClick()" mat-button class="example-icon" aria-label="Home button">
-        <span>WatchList</span>
-    </button>    
-    <span class="example-spacer"></span>
-    <button 
-        mat-icon-button class="profile-icon" 
-        aria-label="icon button for navigation to profile page"
-        (click)="onProfileClick()"
-        >
-      <mat-icon>account_circle</mat-icon>
-    </button>
-    <button 
-        mat-icon-button class="logout-icon" 
-        aria-label="icon button for logout"
-        (click)="onLogout()"
-        >
-     <mat-icon>logout</mat-icon>
-   </button>
-  </mat-toolbar>
-</p>
+<app-navbar></app-navbar>
 
 <router-outlet></router-outlet>
 
