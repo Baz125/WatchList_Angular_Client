@@ -1,27 +1,37 @@
-# MyFlxAngularClient
+# WatchList App
+
+WatchList is a Single Page Web Application built with Angular. It allows users to interact with the data available on the [Movie App RESTful API](https://github.com/Baz125/movie-app/tree/main).
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.2.0.
 
-## Development server
+This is a portfolio project focussed on building SPAs with Angular and Developer collaboration, documentation and handoffs.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+## Technologies / Libraries Used
+Angular<br>
+Angular Material<br>
+JSDoc<br>
 
-## Code scaffolding
+## Features & Views
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+### Welcome View
+● Allows users to log in with a username and password<br>
+● Allows new users to register (username, password, email, date of birth)<br>
 
-## Build
+### Main view
+● Returns ALL movies to the user (each movie item with an image, title, and description)<br>
+● Ability to select individual pieces of informaiton, per movie to learn more<br>
+● Ability to log out<br>
+● Ability to navigate to Profile view<br>
+● Ability to add/remove movie from favourites<br>
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+### Profile view
+● Displays user registration details<br>
+● Allows users to update their info (username, email, date of birth)<br>
+● Displays favorite movies as a watch-list<br>
+● Allows existing users to deregister<br>
 
-## Running unit tests
+## Deployment
+This app is deployed publicly on Github Pages at [https://baz125.github.io/WatchList_Angular_Client](https://baz125.github.io/WatchList_Angular_Client)
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
 
-## Running end-to-end tests
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
