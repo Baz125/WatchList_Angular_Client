@@ -11,6 +11,9 @@ export class AppComponent {
   constructor(
     private router: Router) { }
 
+  /**
+   * wipes all data from local storage and navigates to login
+   */
   onLogout(): void {
     localStorage.removeItem('user');
     localStorage.removeItem('username');

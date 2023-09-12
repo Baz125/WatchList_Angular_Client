@@ -25,10 +25,12 @@ constructor(
 
 ngOnInit(): void { }
 
-// This is the function responsible for sending the form inputs to the backend
+/**
+ * sends login inputs to the backend
+ */
 loginUser(): void {
     this.fetchApiData.userLogin(this.userData).subscribe((data) => {
-  // Logic for a successful user login goes here! (To be implemented)
+  
       localStorage.setItem("user", JSON.stringify(data.user))
       localStorage.setItem("token", data.token);
       localStorage.setItem('username', data.user.Username)
@@ -38,7 +40,12 @@ loginUser(): void {
         duration: 2000
      });
       this.router.navigate(['movies']);
-    }, () => {
+    },
+      
+      /**
+       * logic for unsuccessful login
+       */
+      () => {
       this.snackBar.open("Something went wrong", 'OK', {
         duration: 2000
       });

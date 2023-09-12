@@ -1,7 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { MatDatepicker } from '@angular/material/datepicker';
 import {
   MAT_MOMENT_DATE_FORMATS,
   MomentDateAdapter,
@@ -24,16 +23,25 @@ import { EditUserApisService } from '../services/edit-user-apis.service';
   {provide: MAT_DATE_FORMATS, useValue: MAT_MOMENT_DATE_FORMATS},
 ]
 })
-  
+
+/**
+* Represents the component for editing user data.
+*/
 export class EditUserComponentComponent implements OnInit {
+  /** Input property for user data. */
   @Input() userData = { Username: '', Email: '', Birthday: '' };
+  
+  /**Output event emitter for when the dialog is closed */
   @Output() dialogClosed = new EventEmitter<void>();
 
   constructor(
     public editUserApi: EditUserApisService,
     public dialogRef: MatDialogRef<EditUserComponentComponent>,
     public snackBar: MatSnackBar) { }
-
+  
+  /**
+  * Retrieves user data from local storage if available.
+  */
   ngOnInit(): void {
     const userDataString = localStorage.getItem('user');
     if (userDataString !== null) {
@@ -41,8 +49,10 @@ export class EditUserComponentComponent implements OnInit {
     }
   }
 
-  // This is the function responsible for
-  // sending the form inputs to the backend
+  /**
+   * Sends the edited user data to the backend for processing.
+   * Handles success and error responses accordingly.
+   */
   editUser(): void {
     this.editUserApi.editUser(localStorage.getItem('username'), this.userData).subscribe((result) => {
       localStorage.setItem('user', JSON.stringify(result));

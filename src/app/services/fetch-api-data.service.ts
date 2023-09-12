@@ -11,17 +11,34 @@ const apiUrl = 'https://moviedb125.herokuapp.com/'
   providedIn: 'root'
 })
   
+/**
+ * Contains functionality for user login and registration
+ */
+  
 export class WelcomeScreenApis {
   //Inject the HttpClient module to the constructor params
   //This will provide HttpClient to the entire class, makeing it available via this.http
   constructor(private http: HttpClient) { }
-  //Making the api call for the user registration end point
+  
+  /**
+   * makes the api call to the user registration end point
+   * 
+   * @param {any} arg1 - takes the data from the input form
+   */
+
+  
   public userRegistration(userDetails: any): Observable<any> {
     return this.http.post(apiUrl + 'users', userDetails).pipe(
       catchError(this.handleError)
     );
   }
 
+
+    /**
+   * makes the api call to the user login end point
+   * 
+   * @param {any} arg1 - takes the data from the input form
+   */  
   public userLogin(userDetails: any): Observable<any> {
     return this.http.post(apiUrl + 'login', userDetails).pipe(
       map(this.extractResponseData),
