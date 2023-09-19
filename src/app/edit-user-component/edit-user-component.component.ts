@@ -49,19 +49,29 @@ export class EditUserComponentComponent implements OnInit {
     }
   }
 
-  /**
-   * Sends the edited user data to the backend for processing.
-   * Handles success and error responses accordingly.
-   */
+/**
+ * Edit user information.
+ * @remarks This method updates user data through an API call.
+ * @remarks If the update is successful, it closes the modal, emits an event to signal profile-page reinitialization, and displays a success snackbar.
+ * @remarks If the update fails, it displays an error snackbar.
+ */
   editUser(): void {
     this.editUserApi.editUser(localStorage.getItem('username'), this.userData).subscribe((result) => {
+      //Update local storage with new user data
       localStorage.setItem('user', JSON.stringify(result));
-      this.dialogRef.close(); //Closes modal on success
-      this.dialogClosed.emit(); //emits event to let profile-page know to reinitialize
+
+      //Close the modal on success
+      this.dialogRef.close(); 
+
+      //emits event to let profile-page know to reinitialize
+      this.dialogClosed.emit(); 
+
+      // Display a success snackbar
       this.snackBar.open('Success!', 'OK', {
         duration: 2000
       });
     }, (result) => {
+      //Display an error snackbar on failure
       this.snackBar.open(result, 'OK', {
         duration: 2000
       });

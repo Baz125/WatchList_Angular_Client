@@ -1,12 +1,11 @@
+/**
+ * A component representing the user login form.
+ */
 import { Component, OnInit, Input } from '@angular/core';
-// You'll use this import to close the dialog on success
 import { MatDialogRef } from '@angular/material/dialog';
-// This import brings in the API calls we created in 6.2
 import { WelcomeScreenApis } from '../services/fetch-api-data.service';
-// This import is used to display notifications back to the user
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
-
 
 
 @Component({
@@ -27,6 +26,11 @@ ngOnInit(): void { }
 
 /**
  * sends login inputs to the backend
+ * 
+ * @param {object} userData - User login credentials including username and password.
+ * @returns {void}
+ * @throws {Error} If the login attempt fails.
+ * @remarks This function handles user authentication by sending login credentials to the backend API.
  */
 loginUser(): void {
     this.fetchApiData.userLogin(this.userData).subscribe((data) => {

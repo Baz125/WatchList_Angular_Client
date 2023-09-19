@@ -8,24 +8,12 @@ import { Router } from '@angular/router';
 })
 export class AppComponent {
   title = 'WatchList';
+
+    /**
+   * Creates an instance of the `AppComponent`.
+   *
+   * @param {Router} router - The Angular Router service used for navigation.
+   */
   constructor(
     private router: Router) { }
-
-  /**
-   * wipes all data from local storage and navigates to login
-   */
-  onLogout(): void {
-    localStorage.removeItem('user');
-    localStorage.removeItem('username');
-    localStorage.removeItem('token');
-    this.router.navigate(['welcome']);
-  };
-
-  onProfileClick(): void {
-    this.router.navigate(['profile']);
-  }
-
-  onHomeClick(): void {
-    this.router.navigate(['/']);
-  }
 }

@@ -30,5 +30,9 @@
     "strictInputAccessModifiers": true,
     "strictTemplates": true,
     "allowSyntheticDefaultImports": true
-  }
+  },
+  "typedocOptions": {
+    "entryPoints": ["src/main.ts"],
+    "out": "docs"
+}
 }
