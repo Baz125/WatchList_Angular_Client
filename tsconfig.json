@@ -32,7 +32,7 @@
     "allowSyntheticDefaultImports": true
   },
   "typedocOptions": {
-    "entryPoints": ["src/main.ts"],
+    "entryPoints": ["src/main.ts", "src/app/edit-user-component/edit-user-component.component.spec.ts"],
     "out": "docs"
 }
 }
